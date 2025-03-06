@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "m53sWPAFAfpDwUtmGaaLNRS9OwlaMDDuRLcKdI29pKc=",
+  "Source": "ProtocolAPI",
+  "BasePath": "_content/ProtocolAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
