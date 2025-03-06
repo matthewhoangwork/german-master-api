@@ -3,4 +3,7 @@
 GET {{ProtocolAPI_HostAddress}}/api/employees
 Accept: application/json
 
+POST {{ProtocolAPI_HostAddress}}/api/employees
+Accept: application/json
+
 ###

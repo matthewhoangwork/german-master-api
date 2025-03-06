@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/working/.NET/ProtocolAPI/ProtocolAPI/ProtocolAPI.csproj": {}
+    "/Users/working/DOTNET/ProtocolAPI/ProtocolAPI/ProtocolAPI.csproj": {}
   },
   "projects": {
-    "/Users/working/.NET/ProtocolAPI/ProtocolAPI/ProtocolAPI.csproj": {
+    "/Users/working/DOTNET/ProtocolAPI/ProtocolAPI/ProtocolAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/working/.NET/ProtocolAPI/ProtocolAPI/ProtocolAPI.csproj",
+        "projectUniqueName": "/Users/working/DOTNET/ProtocolAPI/ProtocolAPI/ProtocolAPI.csproj",
         "projectName": "ProtocolAPI",
-        "projectPath": "/Users/working/.NET/ProtocolAPI/ProtocolAPI/ProtocolAPI.csproj",
+        "projectPath": "/Users/working/DOTNET/ProtocolAPI/ProtocolAPI/ProtocolAPI.csproj",
         "packagesPath": "/Users/nguyenthanhtue/.nuget/packages/",
-        "outputPath": "/Users/working/.NET/ProtocolAPI/ProtocolAPI/obj/",
+        "outputPath": "/Users/working/DOTNET/ProtocolAPI/ProtocolAPI/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/nguyenthanhtue/.nuget/NuGet/NuGet.Config"
@@ -51,6 +51,10 @@
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.2, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[3.2.1, )"
             },
             "Scalar.AspNetCore": {
               "target": "Package",
