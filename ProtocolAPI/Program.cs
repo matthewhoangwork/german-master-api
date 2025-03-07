@@ -9,8 +9,8 @@ using static Microsoft.AspNetCore.Builder.WebApplication;
 var builder = CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddSingleton<MongoDbService>();
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi

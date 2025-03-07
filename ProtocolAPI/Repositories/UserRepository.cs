@@ -1,14 +1,19 @@
+using ProtocolAPI.Services;
+
 namespace ProtocolAPI.Repositories;
 
-public interface IEmployeeRepository
+public interface IUserRepository
 {
-    // Employee GetById(int id);
-    // void Update(Employee product);
-    // IEnumerable<Employee> GetAll();
+    public Task<User> GetById(int id);
+    public Task AddNewUser(User user);
+    // void Update(User user);
+    public Task<IEnumerable<User>> GetAll();
 }
 
-public class EmployeeRepository : IEmployeeRepository
+public class UserRepository(MongoDbService mongoDbService) : IUserRepository
 {
+    private readonly MongoDbService _mongoDbService = mongoDbService;
+
     // private static List<Employee> _employees = new List<Employee>
     // {
     //     new Employee
@@ -34,18 +39,24 @@ public class EmployeeRepository : IEmployeeRepository
     //     return employeeIndex;
     // }
     //
-    // public Employee GetById(int id)
-    // {
-    //     return _employees[_getEmployeeIndex(id)];
-    // }
+    public async Task<User> GetById(int id)
+    {
+        return await _mongoDbService.GetUser(id: id);
+    }
+
+    public Task AddNewUser(User user)
+    {
+        return _mongoDbService.AddUserAsync(user: user);
+    }
+
     //
     // public void Update(Employee employee)
     // {
     //     _employees[_getEmployeeIndex(employee.Id)] = employee;
     // }
     //
-    // public IEnumerable<Employee> GetAll()
-    // {
-    //     return _employees;
-    // }
+    public Task<IEnumerable<User>> GetAll()
+    {
+        return _mongoDbService.GetUsersASync();
+    }
 }

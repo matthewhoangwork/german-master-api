@@ -1,7 +1,9 @@
 @ProtocolAPI_HostAddress = http://localhost:5086
 
-GET {{ProtocolAPI_HostAddress}}/api/employees
+POST {{ProtocolAPI_HostAddress}}/api/users
 Accept: application/json
+{
+
 
 POST {{ProtocolAPI_HostAddress}}/api/employees
 Accept: application/json
