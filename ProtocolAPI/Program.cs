@@ -17,6 +17,7 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
+var environment = Environments.Development;
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

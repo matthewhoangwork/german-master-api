@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProtocolAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2b957db60d40e01513164d9f62f7235fd1f9532f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bdcd0e62dbfaa73d6729a2bb98ce6643a3e0a1fb")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProtocolAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProtocolAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
