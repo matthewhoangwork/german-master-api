@@ -4,31 +4,15 @@ namespace ProtocolAPI.Services;
 
 public class MongoDbService
 {
-    private readonly IMongoCollection<User> _userCollection;
+    public readonly IMongoCollection<User> UserCollection;
 
     public MongoDbService(IConfiguration configuration)
     {
-        bool isProduction = true;
+        bool isProduction = false;
         string connectionStringStr = isProduction ? "MongoDbConnectionAtlas" : "MongoDbConnectionLocal";
         var connectionString = configuration.GetConnectionString(connectionStringStr);
         var mongoClient = new MongoClient(connectionString);
         var mongoDatabase = mongoClient.GetDatabase("dev");
-        _userCollection = mongoDatabase.GetCollection<User>("Users");
-    }
-
-    public async Task<IEnumerable<User>> GetUsersASync()
-    {
-        return await _userCollection.Find(_ => true).ToListAsync();
-    }
-
-    public async Task AddUserAsync(User user)
-    {
-        await _userCollection.InsertOneAsync(user);
-    }
-
-    public async Task<User> GetUser(int id)
-    {
-        var filter = Builders<User>.Filter.Eq(x => x.Id, id);
-        return await (await _userCollection.FindAsync(filter)).FirstOrDefaultAsync();
+        UserCollection = mongoDatabase.GetCollection<User>("Users");
     }
 }

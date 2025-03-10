@@ -1,61 +1,47 @@
 using Microsoft.AspNetCore.Mvc.Filters;
+using MongoDB.Bson;
 using ProtocolAPI.Repositories;
 
 namespace ProtocolAPI.Services;
 
 public interface IUserService
 {
-    // Task<User> GetUserGetById(int id);
+    Task<User> GetUserById(string id);
     Task AddNewUser(User user);
+
     Task<IEnumerable<User>> GetAll();
     // void UpdateEmployee(Employee product);
 }
 
-public class UserService : IUserService
+public class UserService(IUserRepository userRepository) : IUserService
 {
-    private readonly IUserRepository _userRepository;
-
-    public UserService(IUserRepository userRepository)
+    public async Task<User> GetUserById(string id)
     {
-        _userRepository = userRepository;
+        var user = await userRepository.GetById(id);
+        return user;
     }
-
-    // public User GetUserGetById(int id)
-    // {
-    //     var employee = _userRepository.GetById(id);
-    //     if (employee == null)
-    //     {
-    //         throw new KeyNotFoundException($"No employee found with id {id}");
-    //     } 
-    //     return employee;
-    // }
-
-    // public Task<User> GetUserGetById(int id)
-    // {
-    //     throw new NotImplementedException();
-    // }
+    
 
 
-    private async Task<bool> IsValidNewUser(User newUser)
+    private async Task<bool> _IsValidNewUserUniqueFields(User newUser)
     {
-        var users = await _userRepository.GetAll();
+        var users = await userRepository.FindByFieldsWithOr(email: newUser.Email);
         if (users.Where((user) => user.Email == newUser.Email).ToList().Count == 0)
         {
             return true;
         }
-        else
-        {
-            return false;
-        }
+
+        return false;
     }
+
     public async Task AddNewUser(User user)
     {
-        if (await IsValidNewUser(user))
+        if (await _IsValidNewUserUniqueFields(user))
         {
-            await _userRepository.AddNewUser(new User
+            await userRepository.AddNewUser(new User
             {
                 Name = user.Name,
-                Id = user.Id,
+                Id = ObjectId.GenerateNewId().ToString(),
                 CreatedDate = DateTime.Now,
                 Email = user.Email
             });
@@ -68,7 +54,7 @@ public class UserService : IUserService
 
     public Task<IEnumerable<User>> GetAll()
     {
-        var employees = _userRepository.GetAll();
+        var employees = userRepository.GetAll();
         return employees;
     }
     //
